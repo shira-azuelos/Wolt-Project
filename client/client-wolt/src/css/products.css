@@ -1,0 +1,441 @@
+:root {
+    --wolt-blue: #0096f2;
+    --wolt-dark-blue: #007bff;
+    --wolt-gray-light: #f7f9fc;
+    --wolt-gray-medium: #e9ecef;
+    --wolt-text-dark: #343a40;
+    --wolt-text-medium: #6c757d;
+    --wolt-border-radius: 8px;
+    --wolt-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background-color: var(--wolt-gray-light);
+    color: var(--wolt-text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    direction: rtl; /* חשוב: מימין לשמאל */
+    text-align: right; /* יישור טקסט לימין */
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    box-shadow: var(--wolt-shadow);
+    gap: 20px; /* רווח בין חלקים */
+}
+.back-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-center {
+    flex-grow: 1; /* יתפוס את רוב המקום */
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    background-color: var(--wolt-gray-light);
+    border-radius: var(--wolt-border-radius);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 450px; /* רוחב מוגבל */
+    border: 1px solid var(--wolt-gray-medium);
+}
+
+.search-bar i {
+    color: var(--wolt-text-medium);
+    margin-left: 10px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    color: var(--wolt-text-dark);
+    padding: 0; /* ביטול ריפוד פנימי דיפולטיבי */
+}
+
+.search-bar input::placeholder {
+    color: var(--wolt-text-medium);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.location-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--wolt-gray-light);
+    border-radius: var(--wolt-border-radius);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--wolt-text-dark);
+    font-weight: 700;
+    border: 1px solid var(--wolt-gray-medium);
+    transition: background-color 0.2s;
+}
+
+.location-picker:hover {
+    background-color: #e0e6ec;
+}
+
+.location-picker i {
+    color: var(--wolt-blue);
+}
+
+.wolt-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--wolt-blue);
+}
+
+/* --- Section headers for products page --- */
+.section-header {
+    display: flex;
+    flex-direction: row; /* משנה את הכיוון כדי שהסל יהיה בצד שמאל */
+    justify-content: space-between; /* שומר על המרווח בין האלמנטים */
+    align-items: center; /* יישור אנכי למרכז */
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--wolt-text-dark);
+    margin: 0; /* כדי לוודא שאין מרווחים נוספים */
+}
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cart-button {
+    background-color: var(--wolt-blue);
+    color: #fff;
+    border: none;
+    border-radius: var(--wolt-border-radius);
+    padding: 12px 18px;
+    font-size: 1.7rem;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--wolt-shadow);
+    margin-bottom: 5px;
+}
+
+.cart-button:hover {
+    background-color: var(--wolt-dark-blue);
+}
+
+.cart-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--wolt-text-dark);
+}
+
+
+
+.sort-arrows i {
+    font-size: 1.2rem;
+    color: var(--wolt-text-medium);
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sort-arrows i:hover {
+    color: var(--wolt-blue);
+}
+
+.section-subtitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--wolt-text-dark);
+    margin-bottom: 25px;
+    margin-top: 50px;
+}
+
+/* --- Main container --- */
+.container {
+    max-width: 1300px;
+    margin: 0 auto 40px; /* שינוי ה-margin העליון ל-0 */
+    padding: 0 40px;
+}
+
+/* --- Product Cards Grid (מעודכן) --- */
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: var(--wolt-border-radius);
+    overflow: hidden;
+    box-shadow: var(--wolt-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--wolt-gray-medium); /* המסגרת שרצית */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* כדי שהפעולות יהיו בתחתית */
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.restaurant-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 15px 20px 5px;
+    color: var(--wolt-text-dark);
+}
+
+.product-price {
+    color: var(--wolt-text-medium);
+    margin: 0 20px 10px;
+    font-size: 0.95rem;
+}
+
+.product-description {
+    color: var(--wolt-text-medium);
+    margin: 0 20px 15px;
+    font-size: 0.9rem;
+}
+
+/* --- Product Actions (Buttons) --- */
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-top: 1px solid var(--wolt-gray-medium);
+    background-color: var(--wolt-gray-light);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid var(--wolt-gray-medium);
+    border-radius: var(--wolt-border-radius);
+    overflow: hidden;
+}
+
+.quantity-btn {
+    background-color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--wolt-blue);
+}
+
+.quantity-btn:hover {
+    background-color: var(--wolt-gray-medium);
+}
+
+.quantity-display {
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 25px;
+    text-align: center;
+}
+
+.add-to-cart-btn {
+    background-color: var(--wolt-blue);
+    color: #fff;
+    border: none;
+    border-radius: var(--wolt-border-radius);
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--wolt-dark-blue);
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .main-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px 20px;
+    }
+    .header-left, .header-right {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .search-bar {
+        max-width: 100%;
+    }
+    .wolt-logo {
+        display: none;
+    }
+    .container {
+        padding: 0 15px;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .section-subtitle {
+        font-size: 1.5rem;
+    }
+    .restaurants-grid, .stores-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- קטע חוות דעת מתגלגל --- */
+.reviews-section {
+    padding: 20px 0;
+    margin-top: 40px;
+    background-color: var(--wolt-gray-light); /* רקע קל להבלטה */
+    text-align: right;
+}
+
+.reviews-marquee-container {
+    width: 100%;
+    overflow: hidden; /* חותך את הגלילה שלא תצא מהמסך */
+    white-space: nowrap; /* מונע מעבר שורה */
+    position: relative;
+    padding: 20px 0;
+    background-color: #e8f3f6;
+}
+
+.reviews-marquee {
+    display: flex;
+    /* ודא שהשורה הבאה קיימת! זה מפעיל את הגלילה */
+    animation: marquee-rtl 45s linear infinite; 
+    /* משך הזמן (45s) קובע את המהירות. אפשר לשנות אם נדרש. */
+}
+
+/* --- עיצוב מלבן הביקורת --- */
+.review-card {
+    display: inline-block; /* מאפשר לכרטיסים להיות בשורה אחת */
+    width: 300px; /* רוחב קבוע לכרטיס. ברוחב 300px יראו כ-4 כרטיסים במסך רחב. */
+    flex-shrink: 0; /* מונע מהכרטיס להתכווץ */
+    margin-left: 20px; /* רווח בין כרטיסים (רווח מימין בכיוון RTL) */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: var(--wolt-border-radius);
+    box-shadow: var(--wolt-shadow);
+    border-top: 5px solid var(--wolt-blue); /* פס כחול קטן למעלה */
+    text-align: right; /* יישור מימין לשמאל */
+    cursor: default; /* שהעכבר לא ישתנה */
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px); /* אפקט קטן בריחוף */
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-name {
+    font-weight: bold;
+    color: var(--wolt-text-dark);
+}
+
+.review-description {
+    font-size: 0.9em;
+    color: var(--wolt-text-medium);
+    margin-top: 5px;
+}
+
+.review-stars {
+    color: gold;
+    font-size: 1.2em;
+    direction: ltr; /* יישור הכוכבים לשמאל (כדי שה-5 כוכבים יהיו מסודרים נכון) */
+}
+
+/* --- הגדרת אנימציית הגלילה (Marquee) --- */
+@keyframes marquee-rtl {
+    0% {
+        transform: translateX(0); /* מתחיל ללא הזזה */
+    }
+    100% {
+        /* מזיז את התוכן שמאלה ב-33.33% מרוחבו הכולל (כי שפכלנו פי 3) */
+        transform: translateX(-33.33%);
+    }
+}
+
+/* ביטול גלילה כאשר אין מספיק חוות דעת (אם הוספת את הקלאס ב-JS) */
+.reviews-marquee.no-scroll {
+    animation: none;
+    justify-content: center; 
+    transform: translateX(0) !important; /* ודא שאין הזזה */
+    
+} 
+
+.reviews-marquee-container {
+    width: 100%; /* רוחב מלא */
+    overflow: hidden; /* חותך את הגלילה שלא תצא מהמסך */
+    white-space: nowrap; /* מונע מעבר שורה */
+    position: relative;
+    background-color: #e8f3f6;
+}
+
+.reviews-marquee {
+    display: inline-block; /* תצוגה בשורה אחת */
+    animation: marquee 100s linear infinite; /* קיצור זמן האנימציה ל-20 שניות */
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0); /* מתחיל מהתחלה */
+    }
+    to {
+        transform: translateX(100%); /* עובר עד סוף התוכן */
+    }
+}
+
+

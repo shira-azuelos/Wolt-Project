@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול הזמנות</title>
+    <link rel="stylesheet" href="../css/mangerMain.css"> 
+    <link rel="stylesheet" href="../css/mangerO.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="../js/mangerO.js"></script>
+
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo">Wolt</div>
+        <nav class="admin-nav">
+            <a href="mangerMain.html" class="back-to-site-btn">
+                <i class="fas fa-arrow-right"></i> חזרה לניהול ראשי
+            </a>
+        </nav>
+    </header>
+    <div id="notifications"></div>
+    <main class="admin-container">
+        <h1 class="page-title">ניהול הזמנות</h1>
+        
+        <div class="orders-table-container">
+            <table id="ordersTable" class="data-table">
+                <thead>
+                    <tr>
+                        <th>מספר הזמנה</th>
+                        <th>שם לקוח</th>
+                        <th>אימייל לקוח</th>
+                        <th>כתובת לקוח</th>
+                        <th>תאריך הזמנה</th>
+                        <th>סטטוס</th>
+                        <th>פעולות</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>

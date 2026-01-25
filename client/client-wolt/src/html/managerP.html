@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול מוצרים</title>
+    <link rel="stylesheet" href="../css/mangerMain.css">
+    <link rel="stylesheet" href="../css/managerP.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/managerP.js"></script>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo">Wolt</div>
+        <nav class="admin-nav">
+            <a href="mangerMain.html" class="back-to-site-btn">
+                <i class="fas fa-arrow-right"></i> חזרה לניהול ראשי
+            </a>
+        </nav>
+    </header>
+    <main class="admin-container">
+        <h1 class="page-title">ניהול מוצרים בחנות</h1>
+        
+        <div class="actions-bar">
+            <button id="add-product-btn" class="wolt-btn primary-btn">
+                <i class="fas fa-plus"></i> הוספת מוצר חדש
+            </button>
+        </div>
+        <div class="products-table-container">
+            <table id="products-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>תמונה</th>
+                        <th>שם מוצר</th>
+                        <th>מחיר</th>
+                        <th>כמות במלאי</th>
+                        <th>קטגוריה</th>
+                        <th>במלאי?</th>
+                        <th>פעולות</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,117 @@
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: var(--wolt-border-radius);
+    box-shadow: var(--wolt-shadow);
+}
+
+.product-form .form-group {
+    margin-bottom: 20px;
+    text-align: right; /* יישור לימין */
+}
+
+.product-form label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--wolt-text-dark);
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form input[type="url"],
+.product-form select,
+.product-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--wolt-gray-medium);
+    border-radius: var(--wolt-border-radius);
+    box-sizing: border-box; /* חשוב לשמירת גודל אחיד */
+    font-size: 1rem;
+    direction: rtl; /* כיוון קלט מימין לשמאל */
+    text-align: right; /* יישור טקסט לימין בתוך השדה */
+}
+
+.product-form textarea {
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    /* קצת עיצוב לריבוע של הצ'קבוקס */
+    appearance: none;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--wolt-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: var(--wolt-blue);
+    border-color: var(--wolt-blue);
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '\f00c'; /* אייקון V של Font Awesome */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--wolt-blue);
+    color: #fff;
+    border: none;
+    border-radius: var(--wolt-border-radius);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--wolt-dark-blue);
+}
+
+/* אזור הודעות (כמו ב-managerS.js) */
+#message-area {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: var(--wolt-border-radius);
+    text-align: center;
+    font-weight: 700;
+    display: none; /* נסתר כברירת מחדל */
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block !important;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block !important;
+}

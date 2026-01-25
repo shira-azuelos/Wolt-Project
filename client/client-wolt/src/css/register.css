@@ -1,0 +1,190 @@
+:root {
+    --wolt-blue: #0096f2;
+    --wolt-dark-blue: #007bff;
+    --wolt-gray-light: #f7f9fc;
+    --wolt-gray-medium: #e9ecef;
+    --wolt-text-dark: #343a40;
+    --wolt-text-medium: #6c757d;
+    --wolt-border-radius: 8px;
+    --wolt-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background-color: var(--wolt-gray-light);
+    color: var(--wolt-text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    direction: rtl; 
+    text-align: right;
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    box-shadow: var(--wolt-shadow);
+    gap: 20px;
+}
+
+.header-left .auth-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.header-left .auth-nav a {
+    text-decoration: none;
+    color: var(--wolt-text-dark);
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: var(--wolt-border-radius);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.header-left .auth-nav a:hover {
+    background-color: var(--wolt-blue);
+    color: white;
+}
+
+.header-center .search-bar {
+    position: relative;
+}
+
+.header-center .search-bar i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--wolt-text-medium);
+}
+
+.header-center .search-bar input {
+    width: 300px;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid var(--wolt-gray-medium);
+    border-radius: var(--wolt-border-radius);
+    font-family: 'Heebo', sans-serif;
+    text-align: right;
+    direction: rtl;
+}
+
+.header-center .search-bar input:focus {
+    outline: none;
+    border-color: var(--wolt-blue);
+}
+
+.header-right {
+    display: flex;
+    align-items:center;
+    gap: 20px;
+}
+
+.wolt-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--wolt-blue);
+}
+.category-bar {
+    background-color: #fff;
+    padding: 15px 40px;
+    box-shadow: var(--wolt-shadow);
+    margin-top: -1px;
+}
+
+.auth-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(120px); /* הקטנו את הגובה המינימלי */
+    padding: 20px;
+}
+
+.auth-box {
+    background-color: #fff;
+    padding: 20px; /* הקטנו את הפדינג הפנימי */
+    border-radius: var(--wolt-border-radius);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 480px;
+    text-align: right;
+    box-sizing: border-box;
+}
+.auth-box h2 {
+    font-size: 1.6rem; /* הקטנו עוד יותר את גודל הכותרת */
+    color: var(--wolt-blue);
+    margin-bottom: 1px; /* הקטנו מרווח תחתון */
+    text-align: center;
+}
+
+.auth-box label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px; /* הקטנו מרווח תחתון */
+    color: var(--wolt-text-dark);
+    font-size: 0.9rem; /* הקטנו את גודל הפונט של הלייבל */
+}
+
+.auth-box input[type="text"],
+.auth-box input[type="email"],
+.auth-box input[type="password"] {
+    width: 100%;
+    padding: 8px; /* הקטנו את הפדינג הפנימי של האינפוט */
+    border: 1px solid var(--wolt-gray-medium);
+    border-radius: var(--wolt-border-radius);
+    box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.8rem; /* הקטנו את גודל הפונט של האינפוט */
+}
+
+.auth-btn {
+    width: 100%;
+    background-color: var(--wolt-blue);
+    color: white;
+    padding: 10px; /* הקטנו את הפדינג של הכפתור */
+    border: none;
+    border-radius: var(--wolt-border-radius);
+    font-size: 1rem; /* הקטנו את גודל הפונט של הכפתור */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 15px; /* הקטנו את המרווח העליון */
+}
+
+.auth-switch-link {
+    text-align: center;
+    margin-top: 15px; /* הקטנו את המרווח העליון */
+    font-size: 0.9rem; /* הקטנו את גודל הפונט */
+    color: var(--wolt-text-medium);
+}
+
+.auth-box .form-group {
+    margin-bottom: 12px; /* הקטנו את המרווח התחתון בין קבוצות השדות */
+}
+.auth-switch-link a {
+    color: var(--wolt-blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* התאמות לכותרת בדפים אלו אם צריך, לדוגמה להסיר סרגל חיפוש/קטגוריות */
+.main-header .header-center .search-bar,
+.category-bar {
+    display: none;
+}
+
+.main-header .header-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+}

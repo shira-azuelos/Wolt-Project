@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עדכון מוצר</title>
+    <link rel="stylesheet" href="../css/mangerMain.css">
+    <link rel="stylesheet" href="../css/addproduct.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/updateProduct.js" defer></script> 
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo">Wolt</div>
+        <nav class="admin-nav">
+            <a href="managerP.html" class="back-to-site-btn">
+                <i class="fas fa-arrow-right"></i> חזרה לניהול מוצרים
+            </a>
+        </nav>
+    </header>
+    <main class="admin-container">
+        <div class="container">
+        <h1 class="page-title"><span id="product-name-title">...</span></h1>
+        
+        <div id="message-area" class="hidden"></div>
+
+        <form id="update-product-form" class="product-form">
+            <div class="current-image-container form-group">
+                <label>תמונה נוכחית:</label>
+                <img id="current-product-image" src="" alt="תמונה נוכחית" style="max-width: 150px; height: auto; border: 1px solid #ddd; margin-bottom: 10px;">
+            </div>
+
+            <div class="form-group">
+                <label for="product-name">שם המוצר:</label>
+                <input type="text" id="product-name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="product-price">מחיר (₪):</label>
+                <input type="number" id="product-price" name="price" min="1" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product-amount">כמות במלאי:</label>
+                <input type="number" id="product-amount" name="amount" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="product-cat">קטגוריה:</label>
+                <select id="product-cat" name="catP" required>
+                    <option value="milk">חלבי</option>
+                    <option value="meat">בשרי</option>
+                    <option value="drink">שתיה</option>
+                    <option value="parve">פרווה</option>
+                    <option value="other">אחר</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="product-image">בחר תמונה חדשה :</label>
+                <input type="file" id="product-image" name="imageP" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="product-describe">תיאור המוצר:</label>
+                <textarea id="product-describe" name="describe" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">עדכן מוצר</button>
+        </form>
+         </div>
+    </main>
+</body>
+</html>

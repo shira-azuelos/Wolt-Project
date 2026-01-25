@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolt - ברוכים הבאים</title>
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="../js/products.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <a href="../../main.html" class="back-link">
+                <i class="fas fa-chevron-right"></i> חזרה לדף הבית
+            </a>
+        </div>
+        <div class="header-center">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-products" placeholder="חיפוש מוצר">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="wolt-logo">Wolt</div>
+        </div>
+    </header>
+    <main class="container">
+    <div class="section-header">
+        <h1 class="section-title">המוצרים שלנו</h1>
+         <a href="../html/basketP.html" class="cart-container-main">
+            <button class="cart-button">
+                <i class="fas fa-shopping-basket"></i>
+            </button>
+            <span class="cart-text">סל מוצרים</span>
+        </a>
+    </div>
+    <div id="restaurants-list" class="restaurants-grid">
+    </div>
+</main>
+  <section class="reviews-section">
+    <h2 class="section-title">חוות דעת לקוחות</h2>
+    <div class="reviews-marquee-container">
+        <div class="reviews-marquee" id="reviews-marquee">
+            </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* ירושה של משתני הבסיס מהעיצוב הראשי */
+:root {
+    --wolt-blue: #0096f2;
+    --wolt-dark-blue: #007bff;
+    --wolt-gray-light: #f7f9fc;
+    --wolt-gray-medium: #e9ecef;
+    --wolt-text-dark: #343a40;
+    --wolt-text-medium: #6c757d;
+    --wolt-border-radius: 8px;
+    --wolt-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background-color: var(--wolt-gray-light);
+    color: var(--wolt-text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    direction: rtl; 
+    text-align: right; 
+}
+
+/* --- כותרת עליונה --- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    box-shadow: var(--wolt-shadow);
+}
+
+.admin-header .logo {
+    /* ********** שינוי: קביעת סדר הופעה ********** */
+    /* ערך גבוה יותר (כגון 1) דוחף אותו לסוף המכולה, כלומר לצד שמאל ב-RTL */
+    order: 1; 
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--wolt-blue);
+}
+
+.admin-nav {
+    /* ********** שינוי: קביעת סדר הופעה ********** */
+    /* ערך נמוך יותר (כגון 0) דוחף אותו לתחילת המכולה, כלומר לצד ימין ב-RTL */
+    order: 0;
+}
+
+.back-to-site-btn {
+   text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* --- תוכן ראשי --- */
+.admin-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 40px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--wolt-text-dark);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* --- רשת פעולות (Grid) --- */
+.admin-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.action-card {
+    background-color: #fff;
+    border-radius: var(--wolt-border-radius);
+    box-shadow: var(--wolt-shadow);
+    padding: 30px;
+    text-decoration: none; 
+    color: var(--wolt-text-dark);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--wolt-gray-medium);
+}
+
+.action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    color: var(--wolt-blue);
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: var(--wolt-text-medium);
+    margin: 0;
+}
+
+/* --- התאמה למסכים קטנים --- */
+@media (max-width: 768px) {
+    .admin-header {
+        padding: 15px 20px;
+        /* ********** שינוי: לוודא שהכותרת מיושרת במידת הצורך ********** */
+        /* מוודא שהאלמנטים נשארים מיושרים גם בפריסה מחודשת */
+        justify-content: space-around; 
+    }
+    .admin-container {
+        padding: 0 20px;
+        margin: 30px auto;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .admin-actions-grid {
+        grid-template-columns: 1fr;
+    }
+    /* ביטול ה-order במסכים קטנים כדי לאפשר זרימה רגילה אם ה-flex-wrap נכנס לפעולה */
+    .admin-header .logo, .admin-nav {
+        order: unset; 
+    }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סל מוצרים</title>
+    <link rel="stylesheet" href="../css/basketP.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/basketP.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <a href="products.html" class="back-link">
+                <i class="fas fa-chevron-right"></i> חזרה לחנות
+            </a>
+        </div>
+        <div class="header-right">
+            <div class="wolt-logo">Wolt</div>
+        </div>
+    </header>
+    <main class="container">
+        <h1 class="section-title">סל הקניות שלך</h1>
+        <div id="cart-list" class="cart-grid">
+            </div>
+        <div class="cart-summary-container">
+            <div id="total-price" class="total-price">
+                <h2>סה"כ לתשלום: ₪<span id="total-amount">0</span></h2>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">לתשלום</button>
+        </div>
+    </main>
+</body>
+</html>

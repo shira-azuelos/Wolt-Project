@@ -1,0 +1,107 @@
+/* ירושה של משתני הבסיס מהעיצוב הראשי */
+:root {
+    --wolt-blue: #0096f2;
+    --wolt-dark-blue: #007bff;
+    --wolt-gray-light: #f7f9fc;
+    --wolt-gray-medium: #e9ecef;
+    --wolt-text-dark: #343a40;
+    --wolt-text-medium: #6c757d;
+    --wolt-border-radius: 8px;
+    --wolt-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --wolt-white: #fff;
+    --wolt-red: #dc3545; /* צבע אדום למחיקה */
+    --wolt-red-dark: #c82333;
+}
+
+/* ... (הקוד הקיים שלכם ל-body, admin-header, back-to-site-btn) ... */
+
+/* --- עיצוב כללי לטבלאות וכפתורי פעולה --- */
+/* (הקוד שלכם ל-products-table-container, data-table, action-btn וכו' נשאר) */
+
+/* כפתור כללי Wolt - משמש את הלחצנים הראשיים (שמירה, הוספה) */
+.wolt-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--wolt-border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* יישור מרכז */
+    gap: 8px;
+    text-decoration: none; /* כדי שיעבוד יפה גם על קישורים */
+}
+
+/* כפתור ראשי - שמור שינויים / הוספה */
+.primary-btn {
+    background-color: var(--wolt-blue);
+    color: var(--wolt-white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.primary-btn:hover {
+    background-color: var(--wolt-dark-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* כפתור מחיקה / סכנה */
+.delete-btn {
+    background-color: var(--wolt-red);
+    color: var(--wolt-white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.delete-btn:hover {
+    background-color: var(--wolt-red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* --- עיצוב טופס ניהול חנות --- */
+.store-form-container {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    background-color: var(--wolt-white);
+    padding: 30px;
+    border-radius: var(--wolt-border-radius);
+    box-shadow: var(--wolt-shadow);
+}
+
+.wolt-form .form-group {
+    margin-bottom: 20px;
+}
+
+.wolt-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--wolt-text-dark);
+}
+
+.wolt-form input[type="text"],
+.wolt-form input[type="tel"],
+.wolt-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--wolt-gray-medium);
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 1rem;
+    color: var(--wolt-text-dark);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between; /* מרחיק את הכפתורים אחד מהשני */
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--wolt-gray-medium); /* קו הפרדה עדין */
+}
+
+.store-form-container .wolt-btn {
+    width: 48%; /* נותן לכל כפתור חצי מהרוחב (עם רווח קטן ביניהם) */
+    font-size: 1.1rem; /* גודל פונט קצת יותר גדול */
+}
+/* ********************************************** */
+

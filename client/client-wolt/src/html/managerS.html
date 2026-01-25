@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול חנות</title>
+    <link rel="stylesheet" href="../css/mangerMain.css">
+    <link rel="stylesheet" href="../css/managerS.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/managerS.js"></script>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="logo">Wolt</div>
+        <nav class="admin-nav">
+            <a href="mangerMain.html" class="back-to-site-btn">
+                <i class="fas fa-arrow-right"></i> חזרה לניהול ראשי
+            </a>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <h1 class="page-title" id="store-management-title">טעינת פרטי חנות...</h1>
+        <div id="store-content-container" class="store-form-container">
+            <div id="message-area"></div>
+            
+            <form id="store-form" class="wolt-form">
+                <input type="hidden" id="store-id" name="store-id">
+
+                <div class="current-image-container form-group">
+                    <label>תמונה נוכחית:</label>
+                    <img id="current-store-image" src="" alt="תמונה נוכחית" style="max-width: 150px; height: auto; border: 1px solid #ddd; margin-bottom: 10px;">
+               </div>
+
+                <div class="form-group">
+                    <label for="store-name">שם החנות:</label>
+                    <input type="text" id="store-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="store-street">רחוב:</label>
+                    <input type="text" id="store-street" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="store-city">עיר:</label>
+                    <input type="text" id="store-city" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="store-phone">טלפון:</label>
+                    <input type="tel" id="store-phone" required pattern="^0(5[012345689]|(7[1-9]))[0-9]{7}$">
+                </div>
+
+                <div class="form-group">
+                    <label for="store-image">תמונת חנות:</label>
+                    <input type="file" id="store-image" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="store-type">סוג חנות:</label>
+                    <select id="store-type" required>
+                        <option value="resturant">מסעדה</option>
+                        <option value="shop">חנות</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="store-cat">קטגוריה:</label>
+                    <select id="store-cat" required>
+                        <option value="milk">חלבי</option>
+                        <option value="meat">בשרי</option>
+                        <option value="colbo">כלבו</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" id="update-store-btn" class="wolt-btn primary-btn">
+                        <i class="fas fa-save"></i> שמור שינויים
+                    </button>
+                    <button type="button" id="delete-store-btn" class="wolt-btn delete-btn">
+                        <i class="fas fa-trash-alt"></i> מחק חנות
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

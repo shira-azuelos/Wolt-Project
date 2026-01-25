@@ -1,0 +1,200 @@
+/* Wolt Brand Colors */
+:root {
+    --wolt-blue: #009DE0; /* Cerulean - Primary action color */
+    --wolt-dark-gray: #141414; /* Cod Gray - Text/Header color (used for main text/body for readability) */
+    --wolt-white: #FFFFFF;
+    --wolt-light-gray: #F4F4F4; /* Light background for alternating rows */
+    --wolt-success: #00CC00; /* Green for success state */
+    --wolt-error: #FF0000; /* Red for error state */
+}
+
+/* --- כללי עמוד ואדמין --- */
+body {
+    background-color: #f6f6f6;
+    color: var(--wolt-dark-gray);
+    font-family: 'Heebo', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-header {
+    background-color: var(--wolt-white);
+    border-bottom: 2px solid var(--wolt-light-gray);
+    color: var(--wolt-dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--wolt-blue); /* Wolt Blue Logo */
+}
+
+.back-to-site-btn {
+    text-decoration: none;
+    color: var(--wolt-dark-blue);
+    font-weight: 400;
+    padding: 8px 15px;
+    border: 1px solid var(--wolt-light-blue);
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-to-site-btn:hover {
+    background-color: var(--wolt-light-blue);
+}
+
+.admin-container {
+    padding: 20px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--wolt-dark-blue);
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--wolt-blue);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* --- עיצוב הטבלה (Wolt Style) --- */
+.orders-table-container {
+    background-color: var(--wolt-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft, modern shadow */
+    overflow-x: auto;
+}
+
+#ordersTable {
+    width: 100%;
+    border-collapse: separate; /* Allows for border-radius on container */
+    border-spacing: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* כותרות הטבלה - שימוש בכחול Wolt */
+#ordersTable thead th {
+    background-color: var(--wolt-blue); /* שינוי: כחול Wolt במקום אפור כהה */
+    color: var(--wolt-white);
+    font-weight: 700;
+    text-align: right;
+    padding: 15px 20px;
+    /* rounded corners for the header */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#ordersTable thead th:first-child {
+    border-top-right-radius: 12px;
+}
+#ordersTable thead th:last-child {
+    border-top-left-radius: 12px;
+}
+
+/* שורות הנתונים */
+#ordersTable tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+#ordersTable tbody tr:nth-child(even) {
+    background-color: var(--wolt-light-gray); /* Subtle alternating row color */
+}
+
+#ordersTable tbody tr:hover {
+    background-color: rgba(0, 157, 224, 0.1); /* Light blue hover effect */
+}
+
+#ordersTable tbody td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #E0E0E0;
+    color: var(--wolt-dark-gray);
+    vertical-align: middle;
+}
+
+#ordersTable tbody tr:last-child td {
+    border-bottom: none; /* No border for the last row */
+}
+
+/* עיצוב כפתורי הפעולה */
+.wolt-btn {
+    border: none;
+    border-radius: 20px; /* Highly rounded for a modern, friendly look */
+    padding: 10px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    font-size: 14px;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.primary-btn {
+    background-color: var(--wolt-blue); /* The main Wolt brand color */
+    color: var(--wolt-white);
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: #0081C1; /* Slightly darker blue on hover */
+}
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- הודעות WebSocket --- */
+#notifications {
+    position: fixed;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.notification-message {
+    background-color: var(--wolt-blue);
+    color: var(--wolt-white);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    opacity: 0; /* נתחיל מ-0 כדי לאפשר אנימציה */
+    animation: fadeInOut 8s ease-out forwards;
+}
+
+.new-order-alert {
+    background-color: var(--wolt-blue);
+}
+
+/* אנימציה להודעות */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* עיצוב עבור תאי ה-ID, כדי שיהיו בולטים פחות */
+#ordersTable tbody td:first-child {
+    font-family: monospace;
+    color: #666;
+    font-size: 12px;
+}

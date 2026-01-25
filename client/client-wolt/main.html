@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolt - ברוכים הבאים</title>
+    <link rel="stylesheet" href="../client-wolt/src/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="module" src="../client-wolt/src/main.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <nav class="auth-nav">
+                <ul>
+                    <li><a href="../client-wolt/src/html/register.html" id="register-btn">הרשמה</a></li>
+                    <li><a href="../client-wolt/src/html/login.html" id="login-btn">כניסה</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-center">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-site" placeholder="חיפוש באתר">
+            </div>
+        </div>
+        <div class="header-right">
+            <div id="button-container"></div>
+            <div class="wolt-logo">Wolt</div>
+        </div>
+    </header>
+   <div class="category-bar">
+    <div class="category-buttons">
+        <button class="category-btn " id="shops-btn" data-type="shop">
+            <i class="fas fa-store"></i>
+            חנויות
+        </button>
+        <button class="category-btn" id="restaurants-btn" data-type="resturant">
+            <i class="fas fa-utensils"></i>
+            מסעדות
+        </button>
+        <button class="category-btn active" id="all-btn" data-type="">
+            <i class="fas fa-hand-holding"></i>
+            הכל
+        </button>
+    </div>
+</div>
+    <main class="container">
+        <h1 class="section-title" id="stores-title">חנויות באזור שלי</h1>
+       <div class="filter-sort-bar">
+             <select id="category-filter" class="filter-btn">
+                 <option value="">מסנן לפי קטגוריה</option>
+              </select>
+        </div>
+        <div id="shop-list" class="shop-grid">
+            </div>
+    </main>
+ <div id="courier-promo-bar" class="courier-promo-bar">
+        <a href="../client-wolt/src/html/regDeliver.html" class="courier-link">
+        <span class="promo-text">רוצה להיות חלק מאיתנו? הצטרף כמשלוחן!</span>
+        <i class="fas fa-arrow-left"></i> </a>
+    </div>
+<div id="shop-list" class="shop-grid">
+            </div>
+            <div class="divmessage" hidden>
+                <div class="notification" id="initial-message">
+                    <span class="icon">🚚</span>
+                    <span class="message">ההזמנה הסתיימה בהצלחה. האם תרצה להגיב?</span>
+                    <button id="continue-button">כן</button>
+                    <button id="close-message-btn">לא</button> </div>
+                
+                <div id="rating-container" class="notification" style="display: none;">
+                    <div id="rating">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <textarea id="comment" placeholder="השאר את התגובה שלך כאן..."></textarea>
+                    <button id="submit">שלח</button>
+                </div>
+            </div>
+
+</body>
+</html>

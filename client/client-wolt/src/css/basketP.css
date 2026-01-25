@@ -1,0 +1,178 @@
+body {
+    background-color: #f6f6f6;
+    font-family: 'Heebo', sans-serif;
+    color: #333;
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wolt-logo {
+    color: #0093d3; /* Wolt's blue */
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.fa-chevron-right {
+    font-size: 14px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a1a1a;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.cart-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-item-card:hover {
+    transform: translateY(-2px);
+}
+
+.cart-item-image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-left: 15px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cart-item-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.remove-from-cart-btn {
+    background-color: #f2f2f2;
+    color: #666;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.remove-from-cart-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.cart-summary-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.total-price h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+#total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.checkout-btn {
+    background-color: #0093d3;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.checkout-btn:hover:not(:disabled) {
+    background-color: #007bb6;
+}
+
+.checkout-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 30px;
+}
