@@ -1,119 +1,123 @@
-# WOLT - מערכת לניהול משלוחים ורכישות בזמן אמת 🛵
+# WOLT - Real-Time Delivery & Purchase Management System
 
-מערכת מקיפה המדמה את פונקציונליות הליבה של פלטפורמת משלוחים מודרנית. המערכת מאפשרת ניהול מלא של תהליכי קנייה, משלוחים ועסקאות בזמן אמת, תוך הפרדה ברורה בין לקוחות, בעלי עסקים ושליחים.
+A comprehensive system simulating the core functionality of a modern delivery platform. The system enables full management of purchasing processes, deliveries, and real-time transactions, with a clear separation between customers, store managers, and couriers.
 
 ---
 
-## 🚀 תכונות עיקריות
+## Key Features
 
-### 👤 ממשקי משתמש (Role-Based UI)
+### Role-Based UI (User Interfaces)
 
-- **ממשק לקוח:** עיון בחנויות ומוצרים, ניהול סל קניות (אנונימי/רשום), מעקב הזמנות והוספת ביקורות.
-- **ממשק מנהל חנות:** ניהול מלא של קטלוג המוצרים (CRUD), עדכון פרטי החנות וניהול הזמנות נכנסות.
-- **ממשק שליח:** קבלת התראות על משלוחים זמינים בזמן אמת ועדכון סטטוס המסירה.
+- **Customer Interface:** Browse stores and products, manage shopping carts (anonymous/registered), track orders in real-time, and leave reviews.
+- **Store Manager Interface:** Full management of the product catalog (CRUD), updating store details, and managing incoming orders.
+- **Courier Interface:** Receive real-time notifications for available deliveries and update delivery status.
 
-### ⚡ מחסנית טכנולוגית (Tech Stack)
+### Tech Stack
 
-- **Backend:** Node.js & Express.js בארכיטקטורת MVC.
+- **Backend:** Node.js & Express.js using MVC (Model-View-Controller) architecture.
 - **Database:** MongoDB & Mongoose.
-- **Real-time:** Socket.IO לסנכרון מיידי (התראות לשליחים ועדכוני סטטוס).
-- **Security:** אימות JWT, הצפנת סיסמאות (bcryptjs) ובקרת הרשאות.
-- **Frontend:** JavaScript (ES6+), HTML5, CSS3 ו-Axios.
+- **Real-time:** Socket.IO for instant synchronization (courier notifications and status updates).
+- **Security:** JWT Authentication, password encryption (bcryptjs), and Role-Based Access Control (RBAC).
+- **Frontend:** JavaScript (ES6+), HTML5, CSS3, and Axios.
 
 ---
 
-## 🗄️ מבנה מסד הנתונים (Data Models)
+## Database Schema (Data Models)
 
-### 👤 משתמשים (Users)
+### Users
 
-| שדה         | סוג    | הגבלות/ברירת מחדל                     | תיאור                     |
-| :---------- | :----- | :------------------------------------ | :------------------------ |
-| `firstname` | String | -                                     | שם פרטי של המשתמש         |
-| `lastname`  | String | Required, Min 3 chars                 | שם משפחה                  |
-| `email`     | String | Required, Unique, Email format        | כתובת אימייל להתחברות     |
-| `password`  | String | Required, Hashed                      | סיסמה מוצפנת ב-Bcrypt     |
-| `phone`     | String | Required, Unique, Regex               | מספר טלפון (פורמט ישראלי) |
-| `status`    | String | enum: `claient`, `menager`, `deliver` | תפקיד המשתמש במערכת       |
+| Field       | Type   | Constraints/Default                  | Description                   |
+| :---------- | :----- | :----------------------------------- | :---------------------------- |
+| `firstname` | String | -                                    | User's first name             |
+| `lastname`  | String | Required, Min 3 chars                | User's last name              |
+| `email`     | String | Required, Unique, Email format       | Login email address           |
+| `password`  | String | Required, Hashed                     | Bcrypt encrypted password     |
+| `phone`     | String | Required, Unique, Regex              | Phone number (Israeli format) |
+| `status`    | String | enum: `client`, `manager`, `courier` | User's role in the system     |
 
-### 🍕 מוצרים (Products)
+### Products
 
-| שדה        | סוג      | הגבלות/ברירת מחדל                               | תיאור                      |
-| :--------- | :------- | :---------------------------------------------- | :------------------------- |
-| `name`     | String   | Required                                        | שם המוצר                   |
-| `price`    | Number   | Required, Min: 1                                | מחיר בשקלים                |
-| `describe` | String   | Default: ""                                     | תיאור קצר של המנה          |
-| `amount`   | Number   | Default: 0                                      | כמות במלאי                 |
-| `catP`     | String   | enum: `milk`, `meat`, `drink`, `parve`, `other` | קטגוריית כשרות/סוג         |
-| `store`    | ObjectId | Ref: `stores`                                   | מזהה החנות אליה שייך המוצר |
+| Field      | Type     | Constraints/Default                             | Description                     |
+| :--------- | :------- | :---------------------------------------------- | :------------------------------ |
+| `name`     | String   | Required                                        | Product name                    |
+| `price`    | Number   | Required, Min: 1                                | Price in NIS                    |
+| `describe` | String   | Default: ""                                     | Short description of the item   |
+| `amount`   | Number   | Default: 0                                      | Inventory stock quantity        |
+| `catP`     | String   | enum: `milk`, `meat`, `drink`, `parve`, `other` | Kosher category/Type            |
+| `store`    | ObjectId | Ref: `stores`                                   | Store ID the product belongs to |
 
-### 🏠 חנויות (Stores)
+### Stores
 
-| שדה       | סוג      | הגבלות/ברירת מחדל                     | תיאור                 |
-| :-------- | :------- | :------------------------------------ | :-------------------- |
-| `name`    | String   | Required                              | שם החנות/מסעדה        |
-| `address` | Object   | `street`, `city` (Required)           | כתובת פיזית           |
-| `phone`   | String   | Required, Regex                       | טלפון ליצירת קשר      |
-| `typeS`   | String   | enum: `resturant`, `shop`             | סוג העסק              |
-| `manager` | ObjectId | Ref: `User`, Required                 | המשתמש שמנהל את החנות |
-| `openion` | Array    | Objects: `derug`, `nameO`, `describe` | מערך ביקורות ודירוגים |
+| Field     | Type     | Constraints/Default                    | Description                  |
+| :-------- | :------- | :------------------------------------- | :--------------------------- |
+| `name`    | String   | Required                               | Store/Restaurant name        |
+| `address` | Object   | `street`, `city` (Required)            | Physical address             |
+| `phone`   | String   | Required, Regex                        | Contact phone number         |
+| `typeS`   | String   | enum: `restaurant`, `shop`             | Type of business             |
+| `manager` | ObjectId | Ref: `User`, Required                  | User who manages the store   |
+| `opinion` | Array    | Objects: `rating`, `nameO`, `describe` | Array of reviews and ratings |
 
-### 📜 הזמנות (Orders)
+### Orders
 
-| שדה            | סוג      | הגבלות/ברירת מחדל                    | תיאור                 |
-| :------------- | :------- | :----------------------------------- | :-------------------- |
-| `productorder` | Array    | [ObjectId], Ref: `products`          | רשימת המוצרים שהוזמנו |
-| `user`         | ObjectId | Ref: `users`, Required               | הלקוח שביצע את ההזמנה |
-| `status`       | String   | enum: `waiting`, `deliver`, `finish` | מצב המשלוח הנוכחי     |
-
----
-
-## 🌐 תיעוד ה-API (Endpoints)
-
-### 🛒 ניהול הזמנות (Orders)
-
-| פעולה         | נתיב          | שיטה   | הרשאה                    |
-| :------------ | :------------ | :----- | :----------------------- |
-| צפייה בהזמנות | `/orders`     | `GET`  | `Auth` (סינון לפי תפקיד) |
-| יצירת הזמנה   | `/orders`     | `POST` | `Public / Registered`    |
-| עדכון סטטוס   | `/orders/:id` | `PUT`  | `Manager / Deliver`      |
-
-### 🍔 מוצרים וחנויות (Products & Stores)
-
-| פעולה        | נתיב            | שיטה     | הרשאה     |
-| :----------- | :-------------- | :------- | :-------- |
-| שליפת חנויות | `/stores`       | `GET`    | `Public`  |
-| הוספת חנות   | `/stores`       | `POST`   | `Manager` |
-| הוספת מוצר   | `/products`     | `POST`   | `Manager` |
-| מחיקת מוצר   | `/products/:id` | `DELETE` | `Manager` |
+| Field          | Type     | Constraints/Default                   | Description               |
+| :------------- | :------- | :------------------------------------ | :------------------------ |
+| `productorder` | Array    | [ObjectId], Ref: `products`           | List of ordered products  |
+| `user`         | ObjectId | Ref: `users`, Required                | Customer who placed order |
+| `status`       | String   | enum: `waiting`, `delivery`, `finish` | Current delivery status   |
 
 ---
 
-## 🔒 אבטחה ו-Middlewares
+## API Documentation (Endpoints)
 
-המערכת משתמשת בשכבות הגנה (Middlewares) לניהול גישה מאובטחת:
+### Order Management
 
-- **Auth Middleware:** אימות JWT Token וזיהוי המשתמש המחובר.
-- **Role Validation (`hasRole`):** בדיקת הרשאות (למשל: רק לשליח ומנהל מותר לעדכן סטטוס הזמנה).
-- **Joi Validation:** ולידציה מלאה על מבנה הנתונים בבקשות `POST` ו-`PUT`.
-- **Multer:** ניהול העלאת תמונות למוצרים וחנויות ושמירתן בשרת.
+| Action        | Path          | Method | Permission                |
+| :------------ | :------------ | :----- | :------------------------ |
+| View Orders   | `/orders`     | `GET`  | `Auth` (Filtered by role) |
+| Create Order  | `/orders`     | `POST` | `Public / Registered`     |
+| Update Status | `/orders/:id` | `PUT`  | `Manager / Courier`       |
+
+### Products & Stores
+
+| Action         | Path            | Method   | Permission |
+| :------------- | :-------------- | :------- | :--------- |
+| Fetch Stores   | `/stores`       | `GET`    | `Public`   |
+| Add Store      | `/stores`       | `POST`   | `Manager`  |
+| Add Product    | `/products`     | `POST`   | `Manager`  |
+| Delete Product | `/products/:id` | `DELETE` | `Manager`  |
 
 ---
 
-## 🔄 תקשורת בזמן אמת (Socket.IO Flow)
+## Security & Middlewares
 
-הלוגיקה מנוהלת דרך `app.js` ומאפשרת סנכרון מלא:
+The system utilizes custom Middlewares to ensure secure access control:
 
-1. **הרשמה (Register):** משתמש מתחבר משייך את ה-`userId` שלו ל-`socket.id` בשרת.
-2. **הודעה לשליח:** ברגע שהזמנה עוברת לסטטוס `deliver`, נשלחת התראה לכל השליחים המחוברים.
-3. **סיום הזמנה:** כאשר שליח מסמן `finish`, הלקוח מקבל הודעה אישית עם בקשה לדירוג החנות.
+- **Auth Middleware:** Validates JWT Tokens and identifies the logged-in user.
+- **Role Validation (`hasRole`):** Checks permissions (e.g., only couriers and managers can update order status).
+- **Joi Validation:** Comprehensive schema validation for `POST` and `PUT` request bodies.
+- **Multer:** Handles image uploads for products and stores, storing them on the server.
 
 ---
 
-## ⚙️ הרצה מקומית
+## Real-Time Communication (Socket.IO Flow)
 
-1. **התקנת תלויות:**
-   ```bash
-   npm install
-   ---
-   © פותח ע"י: שירה אזואלוס וטובי גרינגרד
-   ```
+The logic is managed via `app.js` to enable seamless synchronization:
+
+1. **Registration:** A connecting user maps their `userId` to their unique `socket.id` on the server.
+2. **Courier Notification:** When an order status changes to `delivery`, an alert is broadcasted to all connected couriers.
+3. **Order Completion:** When a courier marks an order as `finish`, the customer receives a notification requesting a store review.
+
+---
+
+## Local Setup
+
+1. **Install Dependencies:**
+
+```bash
+npm install
+Run the Server:
+
+Bash
+npm start
+© Developed by: Shira Azualos & Tobi Gringard
+```
