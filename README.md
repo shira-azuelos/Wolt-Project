@@ -49,3 +49,5 @@ git clone [https://github.com/shira-azuelos/wolt-clone.git](https://github.com/s
 cd wolt-clone
 npm install
 npm run dev
+
+Developed by: Shira Azuelos & Tovi Gringard
